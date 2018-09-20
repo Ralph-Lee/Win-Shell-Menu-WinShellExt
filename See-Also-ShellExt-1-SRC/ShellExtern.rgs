@@ -1,0 +1,39 @@
+HKCR
+{
+	ShellExt.ShellExtern.1 = s 'ShellExtern Class'
+	{
+		CLSID = s '{507925AE-6108-4D7C-AF2C-9DC5ACEFBBC5}'
+	}
+	ShellExt.ShellExtern = s 'ShellExtern Class'
+	{
+		CLSID = s '{507925AE-6108-4D7C-AF2C-9DC5ACEFBBC5}'
+		CurVer = s 'ShellExt.ShellExtern.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {507925AE-6108-4D7C-AF2C-9DC5ACEFBBC5} = s 'ShellExtern Class'
+		{
+			ProgID = s 'ShellExt.ShellExtern.1'
+			VersionIndependentProgID = s 'ShellExt.ShellExtern'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{930D29D1-24CF-4CAD-AEBD-FC713A7105B0}'
+		}
+	}
+	NoRemove Directory
+    {
+        NoRemove Background
+        {
+            NoRemove ShellEx
+            {
+                NoRemove ContextMenuHandlers
+                {
+                    ForceRemove ShellExternFolderBackGround = s '{507925AE-6108-4D7C-AF2C-9DC5ACEFBBC5}'
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\IISExpress]
+@="IIS Express Website Here"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\IISExpress\command]
+@="cmd /c start /D\"C:\\Program Files (x86)\\IIS Express\\\" iisexpress.exe /port:%%random%% /path:\"%1\""
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\IISExpress]
+@="IIS Express Website Here"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\IISExpress\command] 
+@="cmd /c start /D\"C:\\Program Files (x86)\\IIS Express\\\" iisexpress.exe /port:%%random%% /path:\"%V\""

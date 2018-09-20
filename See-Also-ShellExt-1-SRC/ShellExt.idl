@@ -1,0 +1,38 @@
+// ShellExt.idl : IDL source for ShellExt.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ShellExt.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(A10C6A18-6496-4D66-962E-1E4A2E2F8148),
+		dual,
+		helpstring("IShellExtern Interface"),
+		pointer_default(unique)
+	]
+	interface IShellExtern : IDispatch
+	{
+	};
+
+[
+	uuid(930D29D1-24CF-4CAD-AEBD-FC713A7105B0),
+	version(1.0),
+	helpstring("ShellExt 1.0 Type Library")
+]
+library SHELLEXTLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(507925AE-6108-4D7C-AF2C-9DC5ACEFBBC5),
+		helpstring("ShellExtern Class")
+	]
+	coclass ShellExtern
+	{
+		[default] interface IShellExtern;
+	};
+};
