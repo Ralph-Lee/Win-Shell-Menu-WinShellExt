@@ -18,15 +18,15 @@
 
 ## Repos
 
+- [Babun - Home - A Windows shell Base on Cygwin](http://babun.github.io/)
+
+- [Babun - Github](https://github.com/babun/babun)
+
 - [CMDer - Home](http://cmder.net/)
 
 - [CMDer - Github](https://github.com/cmderdev/cmder)
 
 - [Cmder - Context Right-Click Menu for Windows](https://gist.github.com/jojobyte/66c8346ed8948b9b395f)
-
-- [Babun - Home - A Windows shell Base on Cygwin](http://babun.github.io/)
-
-- [Babun - Github](https://github.com/babun/babun)
 
 ## Expand right-click menu on background
 
@@ -40,18 +40,18 @@
 
     @ECHO OFF
     SET REGPATH=HKEY_CLASSES_ROOT\Folder\shell
-    REM REG ADD "%REGPATH%\zzdos" /ve /d "CMD Prompt(&Z)" /f
+    REM REG ADD "%REGPATH%\zzdos" /ve /d "CMD Prompt" /f
     REG ADD "%REGPATH%\zzdos" /ve /d "CMD Prompt" /f
     REG ADD "%REGPATH%\zzdos\command" /ve /d "cmd.exe /K CD %%1" /f
     REM
-    REM REG ADD "%REGPATH%\zzexplorer" /ve /d "Open In A New Window(&Y)" /f
-    REG ADD "%REGPATH%\zzexplorer" /ve /d "Open In New Window" /f
+    REM REG ADD "%REGPATH%\zzexplorer" /ve /d "Open In A New Window" /f
+    REG ADD "%REGPATH%\zzexplorer" /ve /d "New Window" /f
     REG ADD "%REGPATH%\zzexplorer\command" /ve /d "explorer.exe /e,/root,%%L" /f
     REM
     ECHO.
     PAUSE
 
-## Edit with Vim
+## 1. Edit with Vim
 
 - [Mentioned GvimExt code on Github](https://github.com/vim/vim/tree/master/src/GvimExt)
 
@@ -61,7 +61,29 @@
 
 - [Add Vim to the Windows Explorer context menu](http://vim.wikia.com/wiki/Add_Vim_to_the_Windows_Explorer_context_menu)
 
-## Git Bash here
+## 2. Cygwin Bash Here
+
+- [Mintty official doc](https://github.com/mintty/mintty/wiki/Tips#starting-in-a-particular-directory)
+
+**The `chere` command - official tool**
+
+- [Stackoverflow - Open Cygwin at a specific folder](https://stackoverflow.com/questions/9637601/open-cygwin-at-a-specific-folder)
+
+Open a Cygwin terminal **as Administrator** and type the command: `chere -i -t mintty -s bash`
+
+**Cygwin-Bash-Here Repo**
+
+- [Cygwin-Bash-Here on Github](https://github.com/olegcherr/Cygwin-Bash-Here)
+
+How does it work? It adds a simple command to `HKCR\Directory\shell` and `HKCR\Directory\Background\shell`:
+    
+    C:\cygwin\bin\mintty.exe --dir "%V" -e /bin/env CHERE_INVOKING=1 /bin/bash --login
+
+**Open cygwin bash shell from Windows context menu using Windows Registry Table**
+
+- [Mentioned doc](http://shitwefoundout.com/wiki/Open_cygwin_bash_shell_from_Windows_context_menu)
+
+## 3. Git Bash here
 
 - [Can not find "Git Bash Here" in context menu](https://github.com/git-for-windows/git/issues/1229)
 
@@ -107,24 +129,3 @@ Version 3
     [HKEY_CLASSES_ROOT\LibraryFolder\background\shell\git_shell\command]
     @="\"C:\\Program Files\\Git\\git-bash.exe\" \"--cd=%v.\""
 
-## Cygwin Bash Here
-
-- [Mintty official doc](https://github.com/mintty/mintty/wiki/Tips#starting-in-a-particular-directory)
-
-**The `chere` command - official tool**
-
-- [Stackoverflow - Open Cygwin at a specific folder](https://stackoverflow.com/questions/9637601/open-cygwin-at-a-specific-folder)
-
-Open a Cygwin terminal **as Administrator** and type the command: `chere -i -t mintty -s bash`
-
-**Cygwin-Bash-Here Repo**
-
-- [Cygwin-Bash-Here on Github](https://github.com/olegcherr/Cygwin-Bash-Here)
-
-How does it work? It adds a simple command to `HKCR\Directory\shell` and `HKCR\Directory\Background\shell`:
-    
-    C:\cygwin\bin\mintty.exe --dir "%V" -e /bin/env CHERE_INVOKING=1 /bin/bash --login
-
-**Open cygwin bash shell from Windows context menu using Windows Registry Table**
-
-- [Mentioned doc](http://shitwefoundout.com/wiki/Open_cygwin_bash_shell_from_Windows_context_menu)
