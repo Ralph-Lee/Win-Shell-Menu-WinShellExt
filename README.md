@@ -51,6 +51,70 @@
     ECHO.
     PAUSE
 
+## Expand right-click menu
+
+    Windows Registry Editor Version 5.00
+
+    [HKEY_CLASSES_ROOT\Directory\shell\OpenCmdHere]
+    @="Open CMD Here"
+    "Icon"="cmd.exe"
+
+    [HKEY_CLASSES_ROOT\Directory\shell\OpenCmdHere\command]
+    @="cmd.exe /s /k pushd "%V""
+
+    [HKEY_CLASSES_ROOT\Directory\Background\shell\OpenCmdHere]
+    @="Open CMD Here"
+    "Icon"="cmd.exe"
+
+    [HKEY_CLASSES_ROOT\Directory\Background\shell\OpenCmdHere\command]
+    @="cmd.exe /s /k pushd \"%V\""
+
+    [HKEY_CLASSES_ROOT\Drive\shell\OpenCmdHere]
+    @="Open CMD Here"
+    "Icon"="cmd.exe"
+
+    [HKEY_CLASSES_ROOT\Drive\shell\OpenCmdHere\command]
+    @="cmd.exe /s /k pushd \"%V\""
+
+    [HKEY_CLASSES_ROOT\LibraryFolder\background\shell\OpenCmdHere]
+    @="Open CMD Here"
+    "Icon"="cmd.exe"
+
+    [HKEY_CLASSES_ROOT\LibraryFolder\background\shell\OpenCmdHere\command]
+    @="cmd.exe /s /k pushd \"%V\""
+
+**Previous Version**
+
+    Windows Registry Editor Version 5.00
+
+    [HKEY_CLASSES_ROOT\Directory\shell\OpenCmdHere]
+    @="Open CMD Here"
+    "Icon"="cmd.exe"
+
+    [HKEY_CLASSES_ROOT\Directory\shell\OpenCmdHere\command]
+    @="PowerShell -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/k, pushd,%V' -Verb RunAs\""
+
+    [HKEY_CLASSES_ROOT\Directory\Background\shell\OpenCmdHere]
+    @="Open CMD Here"
+    "Icon"="cmd.exe"
+
+    [HKEY_CLASSES_ROOT\Directory\Background\shell\OpenCmdHere\command]
+    @="cmd.exe -noexit -command Set-Location -literalPath '%V'"
+
+    [HKEY_CLASSES_ROOT\Drive\shell\OpenCmdHere]
+    @="Open CMD Here"
+    "Icon"="cmd.exe"
+
+    [HKEY_CLASSES_ROOT\Drive\shell\OpenCmdHere\command]
+    @="PowerShell -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/k, pushd,%V' -Verb RunAs\""
+
+    [HKEY_CLASSES_ROOT\LibraryFolder\background\shell\OpenCmdHere]
+    @="Open CMD Here"
+    "Icon"="cmd.exe"
+
+    [HKEY_CLASSES_ROOT\LibraryFolder\background\shell\OpenCmdHere\command]
+    @="PowerShell -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/k, pushd,%V' -Verb RunAs\""
+
 ## 1. Edit with Vim
 
 - [Mentioned GvimExt code on Github](https://github.com/vim/vim/tree/master/src/GvimExt)
