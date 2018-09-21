@@ -23,5 +23,7 @@
 #### Chere Command - Official Tool
 - [Stackoverflow - Open Cygwin at a specific folder](https://stackoverflow.com/questions/9637601/open-cygwin-at-a-specific-folder)
 After Cygwin is launched, open up a Cygwin terminal (as an administrator) and type the command:
+
     $ chere -i -t mintty -s bash.
+
 Now you should have "Bash Prompt Here" in the Windows right-click context menu.
