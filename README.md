@@ -38,23 +38,21 @@
 
 ## The `chere` command - official tool
 
-- [Stackoverflow - Open Cygwin at a specific folder](https://stackoverflow.com/questions/9637601/open-cygwin-at-a-specific-folder)
+- [Stackoverflow - Open Cygwin at a specific folder](https://stackoverflow.com/questions/9637601/open-cygwin-at-a-specific-folder) : After Cygwin is launched, open up a Cygwin terminal (**as an administrator**) and type the command:
 
-After Cygwin is launched, open up a Cygwin terminal (**as an administrator**) and type the command:
-
-    `$ chere -i -t mintty -s bash`
+    $ chere -i -t mintty -s bash
 
 Now you should have `Bash Prompt Here` in the Windows right-click context menu.
 
 ## Cygwin-Bash-Here Repo using Windows Registry Table
 
--[Cygwin-Bash-Here on Github](https://github.com/olegcherr/Cygwin-Bash-Here)
+- [Cygwin-Bash-Here on Github](https://github.com/olegcherr/Cygwin-Bash-Here)
 
 - How does it work?
 
     It adds a simple command to `HKCR\Directory\shell` and `HKCR\Directory\Background\shell`:
     
-    `"C:\cygwin\bin\mintty.exe" --dir "%V" -e /bin/env CHERE_INVOKING=1 /bin/bash --login`
+    "C:\cygwin\bin\mintty.exe" --dir "%V" -e /bin/env CHERE_INVOKING=1 /bin/bash --login
 
 ## Open cygwin bash shell from Windows context menu
 
@@ -62,9 +60,9 @@ Now you should have `Bash Prompt Here` in the Windows right-click context menu.
 
 Create a `.reg` file with the following (select which options you want and append it/them to the reg file):
 
-    `Windows Registry Editor Version 5.00`
+    Windows Registry Editor Version 5.00
 
-1. Add option in the context menu for a directory:
+1. Add option in the context menu for a **directory**:
 
     ```
     [HKEY_CLASSES_ROOT\Directory\shell\bash]
@@ -73,7 +71,8 @@ Create a `.reg` file with the following (select which options you want and appen
     [HKEY_CLASSES_ROOT\Directory\shell\bash\command]
     @="c:\\cygwin\\bin\\mintty.exe bash --login -i -c 'cd \"`cygpath \"$*\"`\";bash' bash %L"
     ```
-2. Add option in the context menu for a drive:
+
+2. Add option in the context menu for a **drive**:
 
     ```
     [HKEY_CLASSES_ROOT\Drive\shell\bash]
@@ -82,9 +81,10 @@ Create a `.reg` file with the following (select which options you want and appen
     [HKEY_CLASSES_ROOT\Drive\shell\bash\command]
     @="c:\\cygwin\\bin\\mintty.exe bash --login -i -c 'cd \"`cygpath \"$*\"`\";bash' bash %L"
     ```
-3. Add option in the background context menu:
+
+3. Add option in the **background** context menu:
     
-    This works in Windows 7, but requires the 'chere' package:
+    This works in Windows 7, but requires the `chere` package:
 
     ```
     [HKEY_CLASSES_ROOT\Directory\Background\shell\bash]
