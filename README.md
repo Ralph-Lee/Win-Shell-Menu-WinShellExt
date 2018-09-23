@@ -30,13 +30,22 @@
 
 - [CMDer - Home - A Windows console emulator based on ConEmu](http://cmder.net/)
 
-# Expand right-click menu on background
+# Right-Click menu Location of Windows Registry Table
+
+    [HKEY_CLASSES_ROOT\Drive]
+    [HKEY_CLASSES_ROOT\Folder]
+    [HKEY_CLASSES_ROOT\Directory]
+    [HKEY_CLASSES_ROOT\LibraryFolder]
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory] - Legacy, Auto write by [HKEY_CLASSES_ROOT]
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder] - Legacy, Auto write by [HKEY_CLASSES_ROOT]
+
+## Expand right-click menu on background
 
     SET REGPATH=HKEY_CLASSES_ROOT\Directory\Background\shell\CMDShell
     REG ADD "%REGPATH%" /ve /d "CMD Prompt" /f
     REG ADD "%REGPATH%\command" /ve /d "cmd.exe /K CD %%1" /f
 
-# Expand right-click menu on folder
+## Expand right-click menu on folder
 
     SET REGPATH=HKEY_CLASSES_ROOT\Folder\shell
     REG ADD "%REGPATH%\zzdos" /ve /d "CMD Prompt" /f
@@ -45,7 +54,7 @@
     REG ADD "%REGPATH%\zzexplorer" /ve /d "Open in new window" /f
     REG ADD "%REGPATH%\zzexplorer\command" /ve /d "explorer.exe /e,/root,%%L" /f
 
-# Expand right-click menu
+## Expand right-click menu
 
     Windows Registry Editor Version 5.00
 
@@ -127,7 +136,8 @@
 
 - [Stackoverflow - Open Cygwin at a specific folder](https://stackoverflow.com/questions/9637601/open-cygwin-at-a-specific-folder)
 
-Open a Cygwin terminal **as Administrator** and type the command: `chere -i -t mintty -s bash`
+    Open a Cygwin terminal as Administrator and type the command:
+    chere -i -t mintty -s bash
 
 **Cygwin-Bash-Here Repo**
 
@@ -141,35 +151,35 @@ How does it work? It adds a simple command to `HKCR\Directory\shell` and `HKCR\D
 
 - [Mentioned doc](http://shitwefoundout.com/wiki/Open_cygwin_bash_shell_from_Windows_context_menu)
 
-#### **DIRECTORY** : Add option in the context menu for a directory
+#### DIRECTORY : Add option in the context menu for a directory
 
     [HKEY_CLASSES_ROOT\Directory\shell\bash]
     @="Open Bash Here"
     [HKEY_CLASSES_ROOT\Directory\shell\bash\command]
     @="c:\\cygwin\\bin\\mintty.exe bash --login -i -c 'cd \"`cygpath \"$*\"`\";bash' bash %L"
 
-#### **DRIVE** : Add option in the context menu for a drive
+#### DRIVE : Add option in the context menu for a drive
 
     [HKEY_CLASSES_ROOT\Drive\shell\bash]
     @="Open Bash Here"
     [HKEY_CLASSES_ROOT\Drive\shell\bash\command]
     @="c:\\cygwin\\bin\\mintty.exe bash --login -i -c 'cd \"`cygpath \"$*\"`\";bash' bash %L"
 
-#### **BACKGROUND** : Add option in the background context menu - This works in Windows 7, but requires the `chere` package
+#### BACKGROUND : Add option in the background context menu - This works in Windows 7, but requires the `chere` package
 
     [HKEY_CLASSES_ROOT\Directory\Background\shell\bash]
     @="Open Bash Here"
     [HKEY_CLASSES_ROOT\Directory\Background\shell\bash\command]
     @="c:\\cygwin\\bin\\mintty.exe -i /Cygwin-Terminal.ico -e /bin/xhere /bin/bash.exe"
 
-#### **BACKGROUND** : Add option in the background context menu - This works in Windows 8, but **DONOT** requires the `chere` package
+#### BACKGROUND : Add option in the background context menu - This works in Windows 8, but **DONOT** requires the `chere` package
 
     [HKEY_CLASSES_ROOT\Directory\Background\shell\bash]
     @="Open Bash Here"
     [HKEY_CLASSES_ROOT\Directory\Background\shell\bash\command]
     @="c:\\cygwin\\bin\\mintty.exe -i /Cygwin-Terminal.ico bash -i -c 'cd \"`cygpath \"%V\"`\";bash'
 
-#### **BACKGROUND-OF-LIBRARY** : Add option in the background context menu in the Library folders
+#### BACKGROUND-OF-LIBRARY : Add option in the background context menu in the Library folders
     
     [HKEY_CLASSES_ROOT\LibraryFolder\Background\shell]
     [HKEY_CLASSES_ROOT\LibraryFolder\Background\shell\bash]
@@ -181,7 +191,7 @@ How does it work? It adds a simple command to `HKCR\Directory\shell` and `HKCR\D
 
 - [Can not find "Git Bash Here" in context menu](https://github.com/git-for-windows/git/issues/1229)
 
-**Version 1** - Legacy command - Windows XP etc.
+**Version 1**
 
     Windows Registry Editor Version 5.00
     [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\git_gui]
@@ -197,7 +207,7 @@ How does it work? It adds a simple command to `HKCR\Directory\shell` and `HKCR\D
     [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\git_shell\command]
     @="\"C:\\Program Files\\Git\\git-bash.exe\" \"--cd=%v.\""
 
-**Version 2** - Legacy command - Windows XP etc.
+**Version 2**
 
     Windows Registry Editor Version 5.00
     [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\git_shell\command]
