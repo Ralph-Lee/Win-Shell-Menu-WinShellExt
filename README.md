@@ -1,4 +1,4 @@
-## Documents
+# Documents
 
 - [Working with Shell Extensions](https://docs.microsoft.com/en-us/windows/desktop/shell/shell-exts)
 
@@ -12,7 +12,7 @@
 
 - [How to Add & Remove Entries from the Windows Right-Click Menu](https://www.makeuseof.com/tag/how-to-add-remove-entries-from-the-right-click-menu/)
 
-## Repos
+# Repos
 
 - [NirSoft - ShellMenuView](http://www.nirsoft.net/utils/shell_menu_view.html) - Disable/enable context menu items of Explorer
 
@@ -30,13 +30,13 @@
 
 - [CMDer - Home - A Windows console emulator based on ConEmu](http://cmder.net/)
 
-## Expand right-click menu on background
+# Expand right-click menu on background
 
     SET REGPATH=HKEY_CLASSES_ROOT\Directory\Background\shell\CMDShell
     REG ADD "%REGPATH%" /ve /d "CMD Prompt" /f
     REG ADD "%REGPATH%\command" /ve /d "cmd.exe /K CD %%1" /f
 
-## Expand right-click menu on folder
+# Expand right-click menu on folder
 
     SET REGPATH=HKEY_CLASSES_ROOT\Folder\shell
     REG ADD "%REGPATH%\zzdos" /ve /d "CMD Prompt" /f
@@ -45,7 +45,7 @@
     REG ADD "%REGPATH%\zzexplorer" /ve /d "Open in new window" /f
     REG ADD "%REGPATH%\zzexplorer\command" /ve /d "explorer.exe /e,/root,%%L" /f
 
-## Expand right-click menu
+# Expand right-click menu
 
     Windows Registry Editor Version 5.00
 
@@ -109,7 +109,7 @@
     [HKEY_CLASSES_ROOT\LibraryFolder\background\shell\OpenCmdHere\command]
     @="PowerShell -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/k, pushd,%V' -Verb RunAs\""
 
-## 1. Edit with Vim
+# 1. Edit with Vim
 
 - [Mentioned GvimExt code on Github](https://github.com/vim/vim/tree/master/src/GvimExt)
 
@@ -119,7 +119,7 @@
 
 - [Add Vim to the Windows Explorer context menu](http://vim.wikia.com/wiki/Add_Vim_to_the_Windows_Explorer_context_menu)
 
-## 2. Cygwin Bash Here
+# 2. Cygwin Bash Here
 
 - [Mintty official doc](https://github.com/mintty/mintty/wiki/Tips#starting-in-a-particular-directory)
 
@@ -141,39 +141,35 @@ How does it work? It adds a simple command to `HKCR\Directory\shell` and `HKCR\D
 
 - [Mentioned doc](http://shitwefoundout.com/wiki/Open_cygwin_bash_shell_from_Windows_context_menu)
 
-### Create a .reg file with the following (select which options you want and append it/them to the reg file):
-
-    Windows Registry Editor Version 5.00
-
-### **DIRECTORY** : Add option in the context menu for a directory
+#### **DIRECTORY** : Add option in the context menu for a directory
 
     [HKEY_CLASSES_ROOT\Directory\shell\bash]
     @="Open Bash Here"
     [HKEY_CLASSES_ROOT\Directory\shell\bash\command]
     @="c:\\cygwin\\bin\\mintty.exe bash --login -i -c 'cd \"`cygpath \"$*\"`\";bash' bash %L"
 
-### **DRIVE** : Add option in the context menu for a drive
+#### **DRIVE** : Add option in the context menu for a drive
 
     [HKEY_CLASSES_ROOT\Drive\shell\bash]
     @="Open Bash Here"
     [HKEY_CLASSES_ROOT\Drive\shell\bash\command]
     @="c:\\cygwin\\bin\\mintty.exe bash --login -i -c 'cd \"`cygpath \"$*\"`\";bash' bash %L"
 
-### **BACKGROUND** : Add option in the background context menu - This works in Windows 7, but requires the `chere` package
+#### **BACKGROUND** : Add option in the background context menu - This works in Windows 7, but requires the `chere` package
 
     [HKEY_CLASSES_ROOT\Directory\Background\shell\bash]
     @="Open Bash Here"
     [HKEY_CLASSES_ROOT\Directory\Background\shell\bash\command]
     @="c:\\cygwin\\bin\\mintty.exe -i /Cygwin-Terminal.ico -e /bin/xhere /bin/bash.exe"
 
-### **BACKGROUND** : Add option in the background context menu - This works in Windows 8, but **DONOT** requires the `chere` package
+#### **BACKGROUND** : Add option in the background context menu - This works in Windows 8, but **DONOT** requires the `chere` package
 
     [HKEY_CLASSES_ROOT\Directory\Background\shell\bash]
     @="Open Bash Here"
     [HKEY_CLASSES_ROOT\Directory\Background\shell\bash\command]
     @="c:\\cygwin\\bin\\mintty.exe -i /Cygwin-Terminal.ico bash -i -c 'cd \"`cygpath \"%V\"`\";bash'
 
-### **BACKGROUND-OF-LIBRARY** : Add option in the background context menu in the Library folders
+#### **BACKGROUND-OF-LIBRARY** : Add option in the background context menu in the Library folders
     
     [HKEY_CLASSES_ROOT\LibraryFolder\Background\shell]
     [HKEY_CLASSES_ROOT\LibraryFolder\Background\shell\bash]
@@ -181,11 +177,11 @@ How does it work? It adds a simple command to `HKCR\Directory\shell` and `HKCR\D
     [HKEY_CLASSES_ROOT\Directory\Background\shell\bash\command]
     @="c:\\cygwin\\bin\\mintty.exe -i /Cygwin-Terminal.ico bash -i -c 'cd \"`cygpath \"%V\"`\";bash'
 
-## 3. Git Bash here
+# 3. Git Bash here
 
 - [Can not find "Git Bash Here" in context menu](https://github.com/git-for-windows/git/issues/1229)
 
-**Version 1**
+**Version 1** - Legacy command - Windows XP etc.
 
     Windows Registry Editor Version 5.00
     [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\git_gui]
@@ -201,7 +197,7 @@ How does it work? It adds a simple command to `HKCR\Directory\shell` and `HKCR\D
     [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\git_shell\command]
     @="\"C:\\Program Files\\Git\\git-bash.exe\" \"--cd=%v.\""
 
-**Version 2**
+**Version 2** - Legacy command - Windows XP etc.
 
     Windows Registry Editor Version 5.00
     [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\git_shell\command]
