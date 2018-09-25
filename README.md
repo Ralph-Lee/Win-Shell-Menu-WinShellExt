@@ -14,7 +14,15 @@
 
 # Repos
 
-- [NirSoft - ShellMenuView](http://www.nirsoft.net/utils/shell_menu_view.html) - Disable/enable context menu items of Explorer
+- [NirSoft - ShellExView - Shell Extensions Manager](http://www.nirsoft.net/utils/shexview.html) - Disable shell extensions that add dynamic menu items to the context menu of Explorer
+
+- [NirSoft - ShellMenuView - Context menu items Manager](http://www.nirsoft.net/utils/shell_menu_view.html) - Disable/enable context menu items of Explorer.
+
+- [NirSoft - ShellMenuNew - New submenu Manager](http://www.nirsoft.net/utils/shell_menu_new.html) - Disable/enable all menu items in the `New` submenu of Windows Explorer
+
+- [Sordum.org - SendTo Menu Editor](https://www.sordum.org/10830/sendto-menu-editor-v1-1/)
+
+- [Sordum.org - Easy Context Menu](https://www.sordum.org/7615/easy-context-menu-v1-6/)
 
 - [Babun - Github](https://github.com/babun/babun)
 
