@@ -1,0 +1,8 @@
+################################################################################
+HKEY_CLASSES_ROOT\Directory\Background\shell\git_shell\command
+    default="C:\ProgramData\scoop\apps\git\current\git-bash.exe" "--cd=%v."
+
+HKEY_CLASSES_ROOT\Directory\Background\shell\git_shell
+    default=Git Ba&sh Here
+    Icon="C:\ProgramData\scoop\apps\git\current\git-bash.exe"
+################################################################################

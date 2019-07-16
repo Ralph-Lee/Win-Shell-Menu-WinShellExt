@@ -1,0 +1,17 @@
+################################################################################
+C:\ProgramData\scoop\apps\vim\current\GvimExt64\GvimExt.reg
+################################################################################
+gVim-Shell-Reg-1
+HKEY_LOCAL_MACHINE\SOFTWARE\Vim\Gvim
+    path=C:\ProgramData\scoop\apps\vim\current\gvim.exe
+
+gVim-Shell-Reg-2
+HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\gvim
+    default={51EEE242-AD87-11d3-9C1E-0090278BBD99}
+
+gVim-Shell-Reg-3
+HKEY_CLASSES_ROOT\CLSID\{51EEE242-AD87-11d3-9C1E-0090278BBD99}
+
+gVim-Shell-Reg-4
+HKEY_CLASSES_ROOT\*\OpenWithList\Gvim.exe
+################################################################################
